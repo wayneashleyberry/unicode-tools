@@ -1,5 +1,5 @@
 # unicode-tools
 
 ```sh
-cat release/latest-en.xml | go run cmd/unifmt/main.go | fzf | cut -f1 | pbcopy
+cat release/latest-en.txt | fzf | tee /dev/tty | cut -f1 | pbcopy
 ```
