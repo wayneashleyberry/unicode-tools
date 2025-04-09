@@ -29,17 +29,18 @@ func main() {
 
 	seen := make(map[string]bool)
 	for _, ann := range ldml.Annotations {
-		if ann.Type == "tts" {
+		emoji := ann.CP
+		if seen[emoji] {
 			continue
 		}
 
-		// Avoid printing duplicates (some emojis may appear more than once)
-		if seen[ann.CP] {
-			continue
-		}
-
-		seen[ann.CP] = true
+		seen[emoji] = true
 		text := strings.TrimSpace(ann.Text)
-		fmt.Printf("%s\t%s\n", ann.CP, text)
+		fmt.Printf("%s", emoji)
+		fmt.Printf("\t")
+		for _, r := range emoji {
+			fmt.Printf("U+%04X | ", r)
+		}
+		fmt.Printf("%s\n", text)
 	}
 }
