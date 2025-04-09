@@ -40,7 +40,6 @@ func main() {
 
 		seen[ann.CP] = true
 		text := strings.TrimSpace(ann.Text)
-		text = strings.Replace(text, " | ", "\t", -1)
 		fmt.Printf("%s\t%s\n", ann.CP, text)
 	}
 }
